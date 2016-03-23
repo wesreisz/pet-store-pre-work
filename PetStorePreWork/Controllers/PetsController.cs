@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetStorePreWork.DAL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PetStorePreWork.DataModel;
+using PetStorePreWork.DAL.Repository;
 
 namespace PetStorePreWork.Controllers
 {
@@ -17,8 +18,10 @@ namespace PetStorePreWork.Controllers
         // GET: Pets
         public ActionResult Index()
         {
-            var pets = db.Pets.Include(p => p.AnimalType);
-            return View(pets.ToList());
+            //var pets = db.Pets.Include(p => p.AnimalType);
+            //return View(pets.ToList());
+            IPetRepository repository = new PetRepository();
+            return View(repository.All);
         }
 
         // GET: Pets/Details/5
@@ -28,7 +31,8 @@ namespace PetStorePreWork.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pet pet = db.Pets.Find(id);
+            IPetRepository repository = new PetRepository();
+            Pet pet = repository.Find(Decimal.ToInt32(id));
             if (pet == null)
             {
                 return HttpNotFound();
@@ -39,7 +43,8 @@ namespace PetStorePreWork.Controllers
         // GET: Pets/Create
         public ActionResult Create()
         {
-            ViewBag.AnimalTypeCD = new SelectList(db.AnimalTypes, "AnimalTypeCD", "AnimalName");
+            IAnimalTypeCDRepository repository = new AnimalTypeCdRepository();
+            ViewBag.AnimalTypeCD = new SelectList(repository.All, "AnimalTypeCD", "AnimalName");
             return View();
         }
 
@@ -52,8 +57,9 @@ namespace PetStorePreWork.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Pets.Add(pet);
-                db.SaveChanges();
+                IPetRepository repository = new PetRepository();
+                repository.InsertOrUpdates(pet);
+                repository.Save();
                 return RedirectToAction("Index");
             }
 

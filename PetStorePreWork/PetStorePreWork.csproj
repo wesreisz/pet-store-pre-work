@@ -173,27 +173,31 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PetsController.cs" />
-    <Compile Include="DataModel\AnimalType.cs">
+    <Compile Include="DAL\AnimalType.cs">
       <DependentUpon>PetStorePreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\Pet.cs">
+    <Compile Include="DAL\Pet.cs">
       <DependentUpon>PetStorePreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\PetStorePreModel.Context.cs">
+    <Compile Include="DAL\PetStorePreModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PetStorePreModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\PetStorePreModel.cs">
+    <Compile Include="DAL\PetStorePreModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PetStorePreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\PetStorePreModel.Designer.cs">
+    <Compile Include="DAL\PetStorePreModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PetStorePreModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Repository\AnimalTypeCdRepository.cs" />
+    <Compile Include="DAL\Repository\IAnimalTypeCDRepository.cs" />
+    <Compile Include="DAL\Repository\IPetRepository.cs" />
+    <Compile Include="DAL\Repository\PetRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,29 +210,29 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DataModel\PetStorePreModel.Context.tt">
+    <Content Include="DAL\PetStorePreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PetStorePreModel.edmx</DependentUpon>
       <LastGenOutput>PetStorePreModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataModel\PetStorePreModel.tt">
+    <Content Include="DAL\PetStorePreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PetStorePreModel.edmx</DependentUpon>
       <LastGenOutput>PetStorePreModel.cs</LastGenOutput>
     </Content>
-    <Content Include="DataModel\script\frequently-used-scripts.sql" />
-    <Content Include="DataModel\script\pet_store_data_model.sql" />
+    <Content Include="DAL\script\frequently-used-scripts.sql" />
+    <Content Include="DAL\script\pet_store_data_model.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="DataModel\PetStorePreModel.edmx">
+    <EntityDeploy Include="DAL\PetStorePreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PetStorePreModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DataModel\PetStorePreModel.edmx.diagram">
+    <Content Include="DAL\PetStorePreModel.edmx.diagram">
       <DependentUpon>PetStorePreModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\pet-store-pre-work - Web Deploy.pubxml" />
