@@ -11,16 +11,32 @@ namespace PetStorePreWork.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Pet
     {
         public decimal PetId { get; set; }
+
+        [DisplayName(displayName:"Pet Name")]
+        [Required()]
         public string PetName { get; set; }
+        [DisplayName(displayName: "Decription")]
+        [Required()]
         public string PetDescription { get; set; }
+        [Required()]
         public string AnimalTypeCD { get; set; }
+        [Required()]
+        [DisplayFormat(DataFormatString ="{0:C}", ApplyFormatInEditMode = true)]
+        [DisplayName(displayName: "Price")]
         public decimal PetPrice { get; set; }
+        [Required()]
+        [DataType(DataType.Date)]
+        [DisplayName(displayName: "Listed On")]
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}", ApplyFormatInEditMode =true)]
         public System.DateTime ListDT { get; set; }
-    
+
+        [DisplayName(displayName: "Animal Type")]
+        [Required()]
         public virtual AnimalType AnimalType { get; set; }
     }
 }

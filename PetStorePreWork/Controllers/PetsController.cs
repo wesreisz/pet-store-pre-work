@@ -21,6 +21,7 @@ namespace PetStorePreWork.Controllers
             //var pets = db.Pets.Include(p => p.AnimalType);
             //return View(pets.ToList());
             IPetRepository repository = new PetRepository();
+            
             return View(repository.All);
         }
 
